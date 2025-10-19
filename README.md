@@ -1,5 +1,11 @@
 # Aplicación de Recursos Humanos
 
+![Laravel](https://img.shields.io/badge/Laravel-11.x-red.svg)
+![React](https://img.shields.io/badge/React-18.x-blue.svg)
+![Inertia.js](https://img.shields.io/badge/Inertia.js-1.x-purple.svg)
+![MySQL](https://img.shields.io/badge/MySQL-8.x-orange.svg)
+![PHP](https://img.shields.io/badge/PHP-8.2+-blue.svg)
+
 ## Descripción
 
 Esta aplicación de recursos humanos está diseñada para facilitar la gestión de empleados en una organización, permitiendo realizar diversas acciones clave como:
@@ -8,6 +14,77 @@ Esta aplicación de recursos humanos está diseñada para facilitar la gestión 
 - **Control de fichajes**: Registros de entradas y salidas de los empleados.
 - **Solicitudes de vacaciones**: Sistema para solicitar y gestionar las vacaciones del personal.
 - **Gestión de documentación**: Almacenamiento y manejo de documentos importantes, como contratos, permisos, y otros archivos relacionados con los empleados.
+
+## 👨‍💻 Mi participación en el proyecto
+
+### 🎯 **Rol**: Desarrollador Backend
+
+### 🔧 **Funcionalidades desarrolladas por mí**:
+
+#### 📧 **Sistema de Notificaciones en Tiempo Real**
+- **Arquitectura Event-Driven**: Implementé un sistema completo basado en Events y Listeners para notificaciones automáticas
+- **Service Pattern**: `GenericNotificationService` centraliza toda la lógica de notificaciones
+- **Múltiples canales**: Database, Mail (Brevo), Broadcast para tiempo real con configuración flexible
+- **Sistema de colas**: Procesamiento asíncrono con Laravel Jobs (`CreateNotificationRecord`) para mejor performance
+- **Destinatarios inteligentes**: Por roles, permisos, relaciones complejas (departamentos, managers, empleados)
+- **Plantillas dinámicas**: Sistema de templates basado en roles y contexto del usuario con variables personalizadas
+- **Integración Brevo**: Canal personalizado (`BrevoChannel`) con templates específicos y mapeo de variables dinámicas
+- **Notificaciones programadas**: Para envío en fechas futuras con cancelación automática
+
+#### 💻 **Código destacado**:
+```php
+// Ejemplo de uso del sistema de notificaciones
+class NotificarEmpresaActualizada
+{
+    use GenericNotificationTrait;
+
+    public function handle(EmpresaActualizada $event): void
+    {
+        // Envío automático con configuración declarativa
+        $this->sendNotification($event->empresa, 'updated', [
+            'updated_by' => auth()->user()->name ?? 'Sistema',
+            'updated_at' => now()->format('Y-m-d H:i:s')
+        ]);
+    }
+}
+```
+
+```php
+// Configuración flexible en notifications.php
+'empresa' => [
+    'updated' => [
+        'recipients' => ['user_ids' => [1]],
+        'channels' => ['broadcast', 'mail', 'database'],
+        'templates' => [
+            'title' => 'Empresa Actualizada: {nombre}',
+            'content' => 'Se ha actualizado la información de la empresa: {nombre}'
+        ]
+    ]
+]
+```
+
+#### 🛠️ **Tecnologías Backend que dominé**:
+- **Laravel 11** - Framework principal del backend
+- **Laravel Queues** - Sistema de colas para procesamiento asíncrono
+- **Brevo API** - Servicio de envío de emails transaccionales
+- **MySQL** - Base de datos para almacenamiento de notificaciones
+- **Laravel Notifications** - Sistema nativo de notificaciones de Laravel
+- **Event Broadcasting** - Para notificaciones en tiempo real
+
+### 🚀 **Impacto del desarrollo**:
+- ✅ **Mejora en UX**: Los usuarios reciben notificaciones instantáneas sin recargar la página
+- ✅ **Performance optimizada**: Las colas evitan bloqueos en la aplicación principal
+- ✅ **Escalabilidad**: El sistema puede manejar múltiples notificaciones simultáneas con Jobs
+- ✅ **Confiabilidad**: Las notificaciones se procesan de forma asíncrona y segura con manejo de errores
+- ✅ **Flexibilidad**: Sistema configurable que se adapta a diferentes tipos de notificaciones
+- ✅ **Mantenibilidad**: Código modular y bien documentado para fácil extensión
+
+#### 📊 **Estadísticas del sistema**:
+- **Archivos principales**: 10+ componentes especializados
+- **Canales soportados**: Database, Mail (Brevo), Broadcast
+- **Tipos de destinatarios**: Roles, permisos, relaciones complejas
+- **Templates disponibles**: 20+ plantillas específicas por contexto
+- **Jobs implementados**: Procesamiento asíncrono con manejo de errores
 
 ## Tecnologías utilizadas
 
