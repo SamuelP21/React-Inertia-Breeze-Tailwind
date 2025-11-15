@@ -128,6 +128,11 @@ class RoleController extends Controller
      */
     public function destroy(RoleDestroyRequest $request, Role $role)
     {
+        if (! $request->user() || ! $request->user()->can('deleteRoles')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         return DB::transaction(function () use ($role) {
 
             if ($role->users()->count() > 0) {

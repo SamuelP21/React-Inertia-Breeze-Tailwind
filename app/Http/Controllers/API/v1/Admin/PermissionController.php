@@ -115,6 +115,11 @@ class PermissionController extends Controller
      */
     public function destroy(PermissionDestroyRequest $request, Permission $permission)
     {
+        if (! $request->user() || ! $request->user()->can('deletePermissions')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         return DB::transaction(function () use ($permission) {
             // Check if permission has roles associated
             if ($permission->roles()->count() > 0) {

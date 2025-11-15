@@ -159,6 +159,12 @@ class CentroController extends Controller
      */
     public function destroy(CentroDestroyRequest $request, Centro $centro)
     {
+
+        if (! $request->user() || ! $request->user()->can('cancelMyHolidaysRequests')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar solicitudes de vacaciones.'
+            ]);
+        }
         return DB::transaction(function () use ($centro) {
             $centro->load('direccion');
             $direccion = $centro->direccion;

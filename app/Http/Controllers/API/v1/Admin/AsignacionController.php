@@ -119,6 +119,13 @@ class AsignacionController extends Controller
      */
     public function destroy(AsignacionDestroyRequest $request, Asignacion $asignacion)
     {
+
+        if (! $request->user() || ! $request->user()->can('deleteAssignments')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar asignacion.'
+            ]);
+        }
+
         return DB::transaction(function () use ($asignacion) {
             $deleteResult = $asignacion->delete();
 

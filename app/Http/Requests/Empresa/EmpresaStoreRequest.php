@@ -11,7 +11,7 @@ class EmpresaStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->hasPermissionTo('createCompanies', 'web');
     }
 
     /**

@@ -158,6 +158,11 @@ class EmpresaController extends Controller
      */
     public function destroy(EmpresaDestroyRequest $request, Empresa $empresa)
     {
+        if (! $request->user() || ! $request->user()->can('deleteCompanies')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         return DB::transaction(function () use ($empresa) {
             $empresa->load('direccion');
             $direccion = $empresa->direccion;

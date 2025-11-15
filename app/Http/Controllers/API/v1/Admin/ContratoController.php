@@ -84,6 +84,11 @@ class ContratoController extends Controller
      */
     public function destroy(ContratoDestroyRequest $request, Contrato $contrato): JsonResponse
     {
+        if (! $request->user() || ! $request->user()->can('deleteContracts')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar contratos.'
+            ]);
+        }
         $this->contratoService->deleteContrato($contrato);
         return response()->json(status: Response::HTTP_OK, data: [
             'message' => 'Contrato eliminado correctamente.'

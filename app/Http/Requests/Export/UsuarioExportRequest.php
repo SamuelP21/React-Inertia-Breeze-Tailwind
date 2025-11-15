@@ -33,6 +33,6 @@ class UsuarioExportRequest extends BaseExportRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->hasPermissionTo('createCompanies', 'web'); // TODO: Cambiar permiso al que corresponda
     }
 } 

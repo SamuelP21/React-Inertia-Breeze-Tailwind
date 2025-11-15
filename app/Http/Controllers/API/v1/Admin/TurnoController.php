@@ -112,6 +112,12 @@ class TurnoController extends Controller
      */
     public function destroy(TurnoDestroyRequest $request, Turno $turno)
     {
+
+        if (! $request->user() || ! $request->user()->can('deleteShifts')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar Turno.'
+            ]);
+        }
         return DB::transaction(function () use ($turno) {
             // Verificar si el turno tiene jornadas asociadas
             if ($turno->jornadaTurnos()->count() > 0) {

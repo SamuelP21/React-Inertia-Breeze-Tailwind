@@ -230,6 +230,11 @@ class SolicitudPermisoController extends Controller
      */
     public function destroy(SolicitudPermisoDestroyRequest $request, SolicitudPermiso $solicitud)
     {
+        if (! $request->user() || ! $request->user()->can('deletePermissions')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         return DB::transaction(function () use ($solicitud) {
             $deleteResult = $solicitud->delete();
 

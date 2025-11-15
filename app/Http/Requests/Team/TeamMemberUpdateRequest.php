@@ -11,7 +11,7 @@ class TeamMemberUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+         return $this->user()->hasPermissionTo('addUsersToTeams', 'web');
     }
 
     /**

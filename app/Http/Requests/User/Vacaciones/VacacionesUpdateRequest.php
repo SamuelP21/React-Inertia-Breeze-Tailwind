@@ -23,8 +23,7 @@ class VacacionesUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $this->empleado = $this->user()->empleado;
-        return $this->empleado !== null;
+        return $this->user()->hasPermissionTo('askHolidaysRequests', 'web');
     }
 
     /**

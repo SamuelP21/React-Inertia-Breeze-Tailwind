@@ -17,12 +17,12 @@ class UserSeeder extends Seeder
         $getRandomStatus = fn() => UserStatus::cases()[array_rand(UserStatus::cases())]->value;
 
          // Super Admin
-         User::factory()->withPersonalTeam()->create([
+        /*  User::factory()->withPersonalTeam()->create([
             'name' => config('auth.SuperAdmin.name'),
             'email' => config('auth.SuperAdmin.email'),
             'password' => bcrypt('Super_@dmin_15!'),
             'status' => $getRandomStatus(),
-        ])->assignRole('Super Admin');
+        ])->assignRole('Super Admin'); */
         
         //Super Admin
 
@@ -31,44 +31,16 @@ class UserSeeder extends Seeder
             'email' => 'doomsday@gmail.com',
             'password' => bcrypt('Doomsday123!'),
             'status' => UserStatus::ACTIVE->value,
-        ])->assignRole('Administrator');
+        ])->assignRole('Super Admin'); 
 
-        User::factory()->withPersonalTeam()->create([
-            'name' => 'Lider Desarrollo',
-            'email' => 'tysonpopluis@gmail.com',
-            'password' => bcrypt('HateHate123!'),
-            'status' => UserStatus::ACTIVE->value,
-        ])->assignRole('Administrator');
 
-        User::factory()->withPersonalTeam()->create([
-            'name' => 'PruebasDrew',
-            'email' => 'pruebasdrew@gmail.com',
-            'password' => bcrypt('@PruebasDrew123'),
-            'status' => $getRandomStatus(),
-        ]);
-
-        User::factory()->withPersonalTeam()->create([
-            'name' => 'Leonardo',
-            'email' => 'leonardo@admin.com',
-            'password' => bcrypt('Jose.Leonardo1999'),
-            'email_verified_at' => now(),
-            'status' => $getRandomStatus(),
-        ]);
-
-        User::factory()->withPersonalTeam()->create([
-            'name' => 'Christhian',
-            'email' => 'christhian@admin.com',
-            'password' => bcrypt('Admin1234!'),
-            'email_verified_at' => now(),
-            'status' => $getRandomStatus(),
-        ]);
 
         // Regular User
         User::factory()->withPersonalTeam()->create([
             'name' => 'Usuario Normal',
             'email' => 'usuario@normal.com',
             'password' => bcrypt('Usuario123!'),
-            'status' => $getRandomStatus(),
+            'status' => UserStatus::ACTIVE->value,
         ])->assignRole('User');
 
         // Human Resources
@@ -76,7 +48,7 @@ class UserSeeder extends Seeder
             'name' => 'Recursos Humanos',
             'email' => 'rrhh@empresa.com',
             'password' => bcrypt('Rrhh123!'),
-            'status' => $getRandomStatus(),
+            'status' => UserStatus::ACTIVE->value,
         ])->assignRole('Human Resources');
     }
 }

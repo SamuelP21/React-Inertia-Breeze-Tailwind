@@ -75,6 +75,12 @@ class UserController extends Controller
 
     public function destroy(UserDestroyRequest $request, User $user)
     {
+
+        if (! $request->user() || ! $request->user()->can('deleteUsers')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         $this->userService->deleteUser($user);
 
         return response()->json([

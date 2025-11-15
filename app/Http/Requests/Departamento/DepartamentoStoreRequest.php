@@ -16,7 +16,7 @@ class DepartamentoStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->hasPermissionTo('createDepartments', 'web');
     }
 
     /**

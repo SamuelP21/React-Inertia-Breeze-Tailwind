@@ -209,6 +209,11 @@ class VacacionesController extends Controller
      */
     public function destroy(Request $request, SolicitudPermiso $solicitud)
     {
+        if (! $request->user() || ! $request->user()->can('cancelMyHolidaysRequests')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar solicitudes de vacaciones.'
+            ]);
+        }
         if (!Gate::allows('delete', $solicitud)) {
             return response()->json(status: Response::HTTP_FORBIDDEN, data: [
                 'message' => 'No tienes permiso para eliminar solicitudes de vacaciones.'

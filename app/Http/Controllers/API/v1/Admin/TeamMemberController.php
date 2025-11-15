@@ -94,6 +94,11 @@ class TeamMemberController extends Controller
      */
     public function destroy(TeamMemberDestroyRequest $request, Team $team, User $user)
     {
+        if (! $request->user() || ! $request->user()->can('removeUsersFromTeams')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         if (!Gate::allows('removeTeamMember', $team)) {
             return response()->json(status: Response::HTTP_FORBIDDEN, data: [
                 'message' => 'No tienes permiso para eliminar a los miembros del equipo.'

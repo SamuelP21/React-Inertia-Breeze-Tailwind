@@ -119,6 +119,11 @@ class DepartamentoController extends Controller
      */
     public function destroy(DepartamentoDestroyRequest $request, Departamento $departamento)
     {
+        if (! $request->user() || ! $request->user()->can('deleteDepartments')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar departamento.'
+            ]);
+        }
         return DB::transaction(function () use ($departamento) {
             $deleteResult = $departamento->delete();
 

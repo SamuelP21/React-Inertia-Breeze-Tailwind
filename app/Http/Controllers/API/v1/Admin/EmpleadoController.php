@@ -207,6 +207,11 @@ class EmpleadoController extends Controller
      */
     public function destroy(EmpleadoDestroyRequest $request, Empleado $empleado)
     {
+        if (! $request->user() || ! $request->user()->can('deleteEmployees')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         return DB::transaction(function () use ($empleado) {
             $empleado->load('direccion');
             $direccion = $empleado->direccion;

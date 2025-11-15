@@ -189,6 +189,10 @@
         {
             "name": "All",
             "description": "Rol base que define los permisos mínimos que todos los usuarios del sistema deben tener, independientemente de su función específica, como acceso al perfil, visualización de eventos básicos y solicitud de permisos o vacaciones."
+        },
+        {
+            "name": "Guest",
+            "description": "Rol de solo lectura: puede ver todo pero no puede crear, editar ni eliminar nada."
         }
     ],
     "permissions": [
@@ -211,7 +215,7 @@
             "title": "Ver usuario administración",
             "description": "Permite obtener un listado de usuarios a nivel administrativo. Permiso propio de administradores y gestores. Este permiso es necesario en múltiples secciones de la aplicación.",
             "name": "viewUsersAdmin",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Usuarios",
@@ -302,7 +306,7 @@
             "title": "Acceder explorador de carpetas y archivos del empleado",
             "description": "Permite acceder al explorador de carpetas y archivos correspondiente al empleado. Para esto será necesario tener una carpeta en empleados con su CIF correspondiente.",
             "name": "viewEmployeeFiles",
-            "roles": "All"
+            "roles": "Super Admin"
         },
         {
             "module": "Carpetas y archivos",
@@ -393,7 +397,7 @@
             "title": "Ver carpetas y archivos de acceso público",
             "description": "Permite acceder a los archivos y carpetas de acceso público.",
             "name": "publicFilesAccess",
-            "roles": "All"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
         },
         {
             "module": "Equipos",
@@ -421,7 +425,7 @@
             "title": "Crear equipos",
             "description": "Permite crear equipos. Este permiso sobreescribe los permisos asociados al rol dentro del equipo. Utilizado mayoritariamente por administradores y gestores de la aplicación.",
             "name": "createTeams",
-            "roles": "All"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Department Assistant, User"
         },
         {
             "module": "Equipos",
@@ -477,14 +481,14 @@
             "title": "Ver el panel de gestión de empleados",
             "description": "Permite acceder a la vista de empleados global detallada, permiso propio de administradores y gestores de la aplicación. Este permiso puede verse afectado según el estado del empleado o usuario.",
             "name": "viewEmployeesPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Empleados",
             "title": "Ver empleados",
             "description": "Permite obtener un listado de empleados. Este permiso es necesario en múltiples secciones de la aplicación.",
             "name": "viewEmployees",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Empleados",
@@ -526,14 +530,14 @@
             "title": "Ver el panel de municipios",
             "description": "Permite acceder al panel de administración de municipios. Permiso propio de administradores. No requiere modificación salvo excepcionalidades.",
             "name": "viewMunicipiosPanel",
-            "roles": "Administrator, Developer"
+            "roles": "Administrator, Developer, Guest"
         },
         {
             "module": "Municipios",
             "title": "Ver municipios",
             "description": "Permite visualizar los municipios. Suele atribuirse a administradores y gestores de la aplicación.",
             "name": "viewMunicipios",
-            "roles": "Administrator, Developer"
+            "roles": "Administrator, Developer, Guest"
         },
         {
             "module": "Municipios",
@@ -575,14 +579,14 @@
             "title": "Ver el panel de provincias",
             "description": "Permite acceder al panel de administración de provincias. Permiso propio de administradores. No requiere modificación salvo excepcionalidades.",
             "name": "viewProvinciasPanel",
-            "roles": "Administrator, Developer"
+            "roles": "Administrator, Developer, Guest"
         },
         {
             "module": "Provincias",
             "title": "Ver provincias",
             "description": "Permite visualizar las provincias. Suele atribuirse a administradores y gestores de la aplicación.",
             "name": "viewProvincias",
-            "roles": "Administrator, Developer"
+            "roles": "Administrator, Developer, Guest"
         },
         {
             "module": "Provincias",
@@ -673,14 +677,14 @@
             "title": "Ver el panel de gestión de roles",
             "description": "Permite acceder a la vista de roles global detallada. Permiso propio de administradores y gestores de la aplicación. Este permiso puede verse afectado según el estado del empleado o usuario.",
             "name": "viewRolesPanel",
-            "roles": "Administrator, Developer, HR Manager"
+            "roles": "Administrator, Developer, HR Manager, Guest"
         },
         {
             "module": "Roles",
             "title": "Ver roles",
             "description": "Permite obtener un listado de roles. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewRoles",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Roles",
@@ -715,14 +719,14 @@
             "title": "Ver el panel de gestión de permisos (roles)",
             "description": "Permite acceder a la vista global detallada de permisos complementario a roles. Permiso propio de administradores y gestores de la aplicación. Este permiso puede verse afectado según el estado del empleado o usuario.",
             "name": "viewPermissionsPanel",
-            "roles": "Administrator, Developer, HR Manager"
+            "roles": "Administrator, Developer, HR Manager, Guest"
         },
         {
             "module": "Permisos",
             "title": "Ver permisos",
             "description": "Permite visualizar los permisos. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewPermissions",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Permisos",
@@ -764,7 +768,7 @@
             "title": "Ver permisos asignados a roles",
             "description": "Permite visualizar los permisos asignados a los roles. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewRolePermissions",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Permisos",
@@ -785,7 +789,7 @@
             "title": "Ver permisos asignados a usuarios",
             "description": "Permite visualizar los permisos asignados directamente a los usuarios. Permiso utilizado por administradores y gestores.",
             "name": "viewDirectPermissions",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Permisos",
@@ -806,14 +810,14 @@
             "title": "Ver el panel de módulos (permisos)",
             "description": "Permite acceder a la vista global detallada de módulos (componentes de la aplicación). Permiso propio de administradores y gestores.",
             "name": "viewModulesPanel",
-            "roles": "Administrator"
+            "roles": "Administrator, Guest"
         },
         {
             "module": "Módulos",
             "title": "Ver módulos",
             "description": "Permite obtener un listado de módulos. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewModules",
-            "roles": "Administrator"
+            "roles": "Administrator, Guest"
         },
         {
             "module": "Módulos",
@@ -841,14 +845,14 @@
             "title": "Ver el panel de enlaces",
             "description": "Permite acceder a la vista global detallada de enlaces. Este panel permite configurar ampliamente los enlaces de la aplicación que los usuarios van a tener acceso.",
             "name": "viewLinksPanel",
-            "roles": "Administrator"
+            "roles": "Administrator, Guest"
         },
         {
             "module": "Enlaces",
             "title": "Ver enlaces",
             "description": "Permite obtener un listado de enlaces. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewLinks",
-            "roles": "Administrator"
+            "roles": "Administrator, Guest"
         },
         {
             "module": "Enlaces",
@@ -883,14 +887,14 @@
             "title": "Ver panel de administración de empresas",
             "description": "Permite acceder a la vista de empresas global detallada, permiso propio de administradores y gestores de la aplicación.",
             "name": "viewCompaniesPanel",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Empresas",
             "title": "Ver empresas",
             "description": "Permite obtener un listado de empresas. Permiso utilizado por administradores y gestores.",
             "name": "viewCompanies",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Empresas",
@@ -932,14 +936,14 @@
             "title": "Ver panel de administración de centros",
             "description": "Permite acceder a la vista de centros global detallada, permiso propio de administradores y gestores de la aplicación.",
             "name": "viewCentersPanel",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Centros",
             "title": "Ver centros",
             "description": "Permite obtener un listado de centros. Permiso utilizado por administradores y gestores.",
             "name": "viewCenters",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Centros",
@@ -981,14 +985,14 @@
             "title": "Ver panel de administración de departamentos",
             "description": "Permite acceder a la vista de departamentos global detallada, permiso propio de administradores y gestores de la aplicación.",
             "name": "viewDepartmentsPanel",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Departamentos",
             "title": "Ver departamentos",
             "description": "Permite obtener un listado de departamentos. Permiso utilizado por administradores y gestores.",
             "name": "viewDepartments",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Departamentos",
@@ -1030,7 +1034,7 @@
             "title": "Ver panel de administración de contratos",
             "description": "Permite acceder a la vista de contratos global detallada. Permiso propio de administradores y gestores.",
             "name": "viewContractsPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Contratos",
@@ -1044,7 +1048,7 @@
             "title": "Ver contratos",
             "description": "Permite obtener un listado de contratos. Permiso utilizado por administradores y gestores.",
             "name": "viewContracts",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Contratos",
@@ -1086,14 +1090,14 @@
             "title": "Ver el panel de administración de tipos de contratos",
             "description": "Permite acceder a la vista global detallada de tipos de contratos. Permiso propio de administradores y gestores.",
             "name": "viewContractTypesPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Contratos",
             "title": "Ver tipos de contratos",
             "description": "Permite obtener un listado de tipos de contratos. Permiso utilizado por administradores y gestores.",
             "name": "viewContractTypes",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Contratos",
@@ -1121,14 +1125,14 @@
             "title": "Ver el panel de administración de anexos",
             "description": "Permite acceder a la vista global detallada de anexos. Permiso propio de administradores y gestores.",
             "name": "viewAnnexesPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Anexos",
             "title": "Ver anexos",
             "description": "Permite obtener un listado de anexos. Permiso utilizado por administradores y gestores.",
             "name": "viewAnnexes",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Anexos",
@@ -1170,14 +1174,14 @@
             "title": "Ver el panel de administración de asignaciones",
             "description": "Permite acceder a la vista global detallada de asignaciones. Permiso propio de administradores y gestores.",
             "name": "viewAssignmentsPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Asignaciones",
             "title": "Ver asignaciones",
             "description": "Permite obtener un listado de asignaciones. Permiso utilizado por administradores y gestores.",
             "name": "viewAssignments",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Asignaciones",
@@ -1219,14 +1223,14 @@
             "title": "Ver el panel de permisos de trabajo",
             "description": "Permite acceder a la vista global detallada de permisos de trabajo. Permiso propio de administradores y gestores. No confundir con solicitudes de permisos de trabajo.",
             "name": "viewWorkPermitsPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Permisos de trabajo",
             "title": "Ver permisos de trabajo",
             "description": "Permite obtener un listado de permisos de trabajo. Permiso utilizado por administradores y gestores.",
             "name": "viewWorkPermits",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Permisos de trabajo",
@@ -1261,28 +1265,28 @@
             "title": "Ver el panel de solicitudes de permiso",
             "description": "Permite acceder a la vista global detallada de solicitudes de permisos de trabajo. Permiso propio de administradores y gestores. No confundir con solicitudes de permisos de trabajo.",
             "name": "viewWorkPermitRequestsPanel",
-            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Guest"
         },
         {
             "module": "Solicitudes de permisos",
             "title": "Ver mis solicitudes de permiso",
             "description": "Permite visualizar las solicitudes de permiso propias del empleado. Este permiso puede verse modificado por el estado del usuario o empleado.",
             "name": "viewMyWorkPermitRequests",
-            "roles": "All"
+            "roles": "Super Admin, Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Solicitudes de permisos",
             "title": "Ver solicitudes de permisos",
             "description": "Permite obtener un listado de las solicitudes de permisos de trabajo. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewWorkPermitRequests",
-            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Guest"
         },
         {
             "module": "Solicitudes de permisos",
             "title": "Crear solicitudes de permisos",
             "description": "Permite crear solicitudes de permisos de trabajo. Por lo general, todos los empleados pueden crear solicitudes. Permiso utilizado por administradores y gestores.",
             "name": "createWorkPermitRequests",
-            "roles": "All"
+            "roles": "Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Solicitudes de permisos",
@@ -1310,14 +1314,14 @@
             "title": "Solicitar permisos",
             "description": "Permite eliminar solicitudes de permisos de trabajo. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "askWorkPermitRequests",
-            "roles": "All"
+            "roles": "Super Admin, Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Solicitudes de permisos",
             "title": "Cancelar solicitudes propias",
             "description": "Permite cancelar las solicitudes de permisos de trabajo propias. Depende del estado del usuario o empleado y del estado de la solicitud.",
             "name": "cancelMyWorkPermitRequests",
-            "roles": "All"
+            "roles": "Super Admin, Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Solicitudes de permisos",
@@ -1345,7 +1349,7 @@
             "title": "Ver el panel de solicitudes de vacaciones",
             "description": "Permite acceder a la vista global detallada de solicitudes de vacaciones. Permiso propio de administradores y gestores. Se distingue de solicitudes de permisos de trabajo en la forma en cómo se procesan.",
             "name": "viewHolidaysRequestsPanel",
-            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Guest"
         },
         {
             "module": "Vacaciones",
@@ -1359,14 +1363,14 @@
             "title": "Ver solicitudes de vacaciones",
             "description": "Permite obtener un listado de las solicitudes de permisos de trabajo. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewHolidaysRequests",
-            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Guest"
         },
         {
             "module": "Vacaciones",
             "title": "Crear solicitudes de vacaciones",
             "description": "Permite crear solicitudes de vacaciones. Permiso utilizado por administradores y gestores.",
             "name": "createHolidaysRequests",
-            "roles": "All"
+            "roles": "Super Admin, Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Vacaciones",
@@ -1394,14 +1398,14 @@
             "title": "Solicitar vacaciones",
             "description": "Permite solicitar vacaciones. Se diferencia de crear solicitudes de permisos en el grado y alcance que tiene. Este permiso es generalmente asociado a usuarios y empleados con roles básicos donde el único permiso que pueden crear es para si mismo.",
             "name": "askHolidaysRequests",
-            "roles": "All"
+            "roles": "Super Admin, Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Vacaciones",
             "title": "Cancelar solicitudes de vacaciones propias",
             "description": "Permite cancelar las solicitudes de vacaciones propias. Depende del estado del usuario o empleado y del estado de la solicitud.",
             "name": "cancelMyHolidaysRequests",
-            "roles": "All"
+            "roles": "Super Admin, Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Vacaciones",
@@ -1429,7 +1433,7 @@
             "title": "Ver el panel de administración de eventos",
             "description": "Permite acceder a la vista global detallada de eventos. Permiso propio de administradores y gestores.",
             "name": "viewEventsPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Eventos",
@@ -1443,14 +1447,14 @@
             "title": "Ver eventos",
             "description": "Permite obtener un listado de los eventos. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewEvents",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Eventos",
             "title": "Crear eventos",
             "description": "Permite crear eventos. Permiso utilizado por administradores y gestores.",
             "name": "createEvents",
-            "roles": "All"
+            "roles": "Super Admin, Administrator, HR Manager, Human Resources"
         },
         {
             "module": "Eventos",
@@ -1471,7 +1475,7 @@
             "title": "Ver usuarios en eventos",
             "description": "Permite ver los usuarios de los eventos. Permiso utilizado por administradores y gestores. Este permiso sobreescribe la lógica por la cual un usuario puede ver los miembros de los eventos a los que pertenece.",
             "name": "usersInEvent",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Eventos",
@@ -1506,7 +1510,7 @@
             "title": "Ver panel administrativo de notificaciones",
             "description": "Permite acceder a la vista global detallada de notificaciones. Permiso propio de administradores y gestores.",
             "name": "viewNotificationsPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Notificaciones",
@@ -1590,7 +1594,7 @@
             "title": "Ver horarios",
             "description": "Permite obtener un listado de horarios. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewSchedule",
-            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Guest"
         },
         {
             "module": "Horarios",
@@ -1632,7 +1636,7 @@
             "title": "Ver panel administrativo de fichajes",
             "description": "Permite acceder a la vista global detallada de fichajes. Permiso propio de administradores y gestores.",
             "name": "viewClockInPanel",
-            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Guest"
         },
         {
             "module": "Fichajes",
@@ -1646,7 +1650,7 @@
             "title": "Ver fichajes",
             "description": "Permite obtener un listado de fichajes. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewClockIn",
-            "roles": "Administrator, HR Manager, Human Resources, Department Manager"
+            "roles": "Administrator, HR Manager, Human Resources, Department Manager, Guest"
         },
         {
             "module": "Fichajes",
@@ -1681,7 +1685,7 @@
             "title": "Ver panel administrativo de justificantes",
             "description": "Permite acceder a la vista global detallada de justificantes. Permiso propio de administradores y gestores.",
             "name": "viewAbsencesNotesPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Justificantes",
@@ -1695,7 +1699,7 @@
             "title": "Ver justificantes",
             "description": "Permite obtener un listado de los justificantes. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewAbsencesNotes",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Justificantes",
@@ -1730,14 +1734,14 @@
             "title": "Ver panel administrativo de turnos",
             "description": "Permite acceder a la vista global detallada de turnos. Permiso propio de administradores y gestores.",
             "name": "viewShiftsPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Turnos",
             "title": "Ver turnos",
             "description": "Permite obtener un listado de los turnos. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewShifts",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Turnos",
@@ -1779,14 +1783,14 @@
             "title": "Ver panel administrativo de jornadas laborales",
             "description": "Permite acceder a la vista global detallada de jornadas laborales. Permiso propio de administradores y gestores.",
             "name": "viewWorkDaysPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Jornadas laborales",
             "title": "Ver jornadas laborales",
             "description": "Permite obtener un listado de las jornadas laborales. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewWorkDays",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Jornadas laborales",
@@ -1821,21 +1825,21 @@
             "title": "Ver panel administrativo de nóminas",
             "description": "Permite obtener un listado de las jornadas laborales. Permiso utilizado por administradores y gestores. Permiso con amplio alcance.",
             "name": "viewPayrollPanel",
-            "roles": "Administrator, HR Manager, Human Resources"
+            "roles": "Administrator, HR Manager, Human Resources, Guest"
         },
         {
             "module": "Administración",
             "title": "Ver el panel de administración",
             "description": "Permite visualizar el dashboard de administrador el cual contiene las métricas de los empleados, fichajes, absentismos, vacaciones, etc.",
             "name": "viewAdminDashboard",
-            "roles": "Administrator, HR Manager"
+            "roles": "Administrator, HR Manager, Guest"
         },
         {
             "module": "Brevo",
             "title": "Ver el panel administrativo de plantillas",
             "description": "Permite visualizar el listado de plantillas utilizado en Brevo y administrado por los diseñadores sin necesidad de ingresar en la app.",
             "name": "viewBrevoDashboard",
-            "roles": "Administrator, HR Manager, Developer"
+            "roles": "Administrator"
         },
         {
             "module": "Permisos",

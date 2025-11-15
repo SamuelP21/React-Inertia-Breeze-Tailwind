@@ -11,7 +11,7 @@ class ContratoStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->hasPermissionTo('createContracts', 'web');
     }
 
     /**

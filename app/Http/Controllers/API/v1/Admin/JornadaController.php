@@ -150,6 +150,11 @@ class JornadaController extends Controller
      */
     public function destroy(JornadaDestroyRequest $request, Jornada $jornada)
     {
+        if (! $request->user() || ! $request->user()->can('deleteWorkDays')) {
+            return response()->json(status: Response::HTTP_FORBIDDEN, data: [
+                'message' => 'No tienes permiso para eliminar.'
+            ]);
+        }
         return DB::transaction(function () use ($jornada) {
             // Verificar si la jornada tiene contratos asociados
             if ($jornada->contrato()->exists()) {

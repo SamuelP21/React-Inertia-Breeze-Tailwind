@@ -11,7 +11,7 @@ class AsignacionDestroyRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->hasPermissionTo('deleteAssignments', 'web');
     }
 
     /**

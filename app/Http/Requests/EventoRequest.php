@@ -13,7 +13,8 @@ class EventoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; // La autorización se maneja en el EventService
+        //return true; // La autorización se maneja en el EventService
+        return $this->user()->hasPermissionTo('createEvents', 'web');
     }
 
     /**

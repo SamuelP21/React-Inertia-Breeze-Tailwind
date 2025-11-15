@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('jornada_id')->constrained('jornadas')->cascadeOnDelete();
             $table->foreignId('turno_id')->constrained('turnos')->cascadeOnDelete();
             $table->foreignId('modalidad_id')->constrained('modalidades')->cascadeOnDelete();
-            $table->enum('weekday_number', [0, 1, 2, 3, 4, 5, 6]); // 0 = Monday, 1 = Tuesday, ..., 6 = Sunday
+           $table->unsignedTinyInteger('weekday_number'); // INT: 0-6 
             $table->timestamps();
         });
     }

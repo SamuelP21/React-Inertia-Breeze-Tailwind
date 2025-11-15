@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\UserStatus;
 use App\Models\User;
 use App\Models\Genero;
 use App\Models\Empleado;
@@ -30,8 +31,7 @@ class EmpleadoSeeder extends Seeder
         // Obtenemos todos los tipos de documentos disponibles
         $tipo_documentos = TipoDocumento::all();
 
-        // Empleado::factory(20)->make()->each(function ($empleado) use ($tipo_empleados, $generos, $estados, $tipo_documentos) {
-        Empleado::factory(100)->make()->each(function ($empleado) use ($tipo_empleados, $generos, $estados, $tipo_documentos) {
+        Empleado::factory(20)->make()->each(function ($empleado) use ($tipo_empleados, $generos, $estados, $tipo_documentos) {
             $empleado->tipo_empleado_id = $tipo_empleados->random()->id;
             $empleado->genero_id = $generos->random()->id;
             $empleado->estado_id = $estados->random()->id;
@@ -45,6 +45,7 @@ class EmpleadoSeeder extends Seeder
                 'email' => $empleado->email,
                 'password' => bcrypt('password'),
                 'empleado_id' => $empleado->id,
+                'status' => UserStatus::ACTIVE->value,
             ]);
 
             // Generate a random number between 1 and 39
@@ -74,6 +75,7 @@ class EmpleadoSeeder extends Seeder
             'email' => 'villamaravilla@example.com',
             'password' => bcrypt('password'),
             'empleado_id' => $empleado->id,
+            'status' => UserStatus::ACTIVE->value,
         ]);
 
         // Generate a random number between 1 and 39
