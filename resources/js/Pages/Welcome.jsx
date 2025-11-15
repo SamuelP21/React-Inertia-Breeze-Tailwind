@@ -71,13 +71,11 @@ export default function Welcome() {
             {/* Separador */}
             <Separator />
 
-            {/* Botón de login con Google */}
-            <a href={route("auth.google")}>
-                <Button variant="secondary" className="py-7 px-4 w-full">
-                    <GoogleIcon />
-                    <span>{t("login.google")}</span>
-                </Button>
-            </a>
+            <p>Usuario Intivado: Este usuario solo tiene permisos de ver datos de la aplicacion</p>
+            <p>Usuario: invitado@samuraizcode.dev</p>
+            <p>Contraseña: password</p>
+
+            
 
             <p className="text-xs mt-4 text-custom-gray-dark">
                 Al iniciar sesión, aceptas los{" "}

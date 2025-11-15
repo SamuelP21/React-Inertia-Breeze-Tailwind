@@ -214,6 +214,9 @@ export default function Login({ status, canResetPassword }) {
                     </div>
                 </div>
             </form>
+            <p>Usuario Intivado: Este usuario solo tiene permisos de ver datos de la aplicacion</p>
+            <p>Usuario: invitado@samuraizcode.dev</p>
+            <p>Contraseña: password</p>
             {isLoading && <LoadingSpinner />}
             <>
                 <Button
