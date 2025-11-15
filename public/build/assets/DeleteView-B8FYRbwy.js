@@ -1,0 +1,1 @@
+import{j as l}from"./app-QmDeuFiI.js";import{useDataHandler as s}from"./DataHandlerContext-B7JIURCL.js";import{useView as m}from"./ViewContext-CHRI7m7m.js";function f(){const{destroyView:n,handleDestroyView:o,DeleteViewComponent:t}=m(),{deleteItem:r}=s(),{open:i,model:e}=n;return!e||!t?null:l.jsx(t,{model:e,open:i,onOpenChange:()=>o(e),onDelete:r})}export{f as default};

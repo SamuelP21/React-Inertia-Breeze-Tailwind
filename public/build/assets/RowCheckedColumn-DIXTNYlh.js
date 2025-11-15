@@ -1,0 +1,1 @@
+import{j as e}from"./app-QmDeuFiI.js";import{C as t}from"./check-B1LqWW_e.js";const a={id:"select",cell:({row:s})=>e.jsx("div",{className:"flex items-center justify-center w-4",children:s.getIsSelected()&&e.jsx(t,{className:"w-4 h-4"})}),enableSorting:!1,enableHiding:!1};export{a as r};

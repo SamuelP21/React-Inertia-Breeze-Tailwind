@@ -1,0 +1,1 @@
+import{j as s}from"./app-QmDeuFiI.js";import{L as m}from"./label-D2Fce2Gc.js";function n({value:t,children:r,className:a="",...e}){return s.jsx(m,{...e,className:"text-gray-700 dark:text-gray-300 text-md "+a,children:t||r})}export{n as I};

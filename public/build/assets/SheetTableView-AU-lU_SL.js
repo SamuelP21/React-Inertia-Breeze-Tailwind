@@ -1,0 +1,1 @@
+import{j as i}from"./app-QmDeuFiI.js";import{useDataHandler as s}from"./DataHandlerContext-D5mDdu2t.js";import{useView as u}from"./ViewContext-CJgxNVDo.js";function f({}){const{sheetView:n,handleSheetView:o,SheetTableViewComponent:t}=u(),{updateData:a}=s(),{open:r,model:e}=n;return!e||!t?null:i.jsx(t,{model:e,open:r,onOpenChange:()=>o(e),onSaveData:a})}export{f as default};

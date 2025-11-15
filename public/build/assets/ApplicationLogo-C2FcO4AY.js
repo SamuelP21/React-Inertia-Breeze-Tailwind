@@ -1,1 +1,0 @@
-import{j as o}from"./app-fwyInB3c.js";function a({short:t=!1}){return o.jsx(o.Fragment,{children:t?o.jsx("img",{src:shortLogo,alt:"Logo",className:"h-8 w-auto object-contain"}):o.jsx(o.Fragment,{})})}export{a as A};
